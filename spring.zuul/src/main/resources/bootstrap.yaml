@@ -1,0 +1,31 @@
+server:
+  port: 10081
+spring:
+  application:
+    name: chen-zuul
+  redis:
+    host: 192.168.31.207
+    port: 6379
+    password: Alldo807
+    database: 3
+    timeout: 10000
+    lettuce:
+      pool:
+        max-idle: 100
+eureka:
+  client:
+    service-url:
+      default: http://localhost:8761/eureka/
+zuul:
+  routes:
+    baidu:
+      path: /baidu/**
+      url: http://www.baidu.com/
+    #服务ID配置方式
+    api:
+      path: /cli1/**
+      serviceId: eureka-client-app
+    #url配置方式
+    manage:
+      path: /manage/**
+      url: http://localhost:8080/
